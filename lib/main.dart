@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/chats.dart';
 import 'package:flutter_application_1/homePage.dart';
-import 'package:flutter_application_1/horizontal_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,8 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       darkTheme: ThemeData(brightness: Brightness.dark),
       routes: {
-        "/": (context) => const Horizontal(),
-        // "/": (context) => const Chats(),
+        "/": (context) => const HomePage(),
         // "/": (context) => const Chats(),
       },
     );

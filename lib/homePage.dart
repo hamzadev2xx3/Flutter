@@ -1,4 +1,8 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/cardView.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_application_1/consts/styles.dart';
 
 void main() {
   runApp(const HomePage());
@@ -19,7 +23,7 @@ class _MyAppState extends State<HomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      //theme: ThemeData(primarySwatch: Colors.deepPurple),
       darkTheme: ThemeData(brightness: Brightness.dark),
       home: Scaffold(
         appBar: AppBar(
@@ -40,7 +44,7 @@ class _MyAppState extends State<HomePage> {
             ),
           ],
         ),
-        body: Padding(
+        /*   body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
             height: 30,
@@ -193,6 +197,51 @@ class _MyAppState extends State<HomePage> {
                 // Add additional menu items here
               ],
             ),
+          ),
+        ),*/
+        body: Container(
+          padding: EdgeInsets.all(12),
+          //height: 300,
+          //width: 400,
+          //decoration: BoxDecoration(
+          //  border: Border.all(color: Colors.black, width: 3),
+          //  ),
+          child: Column(
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                child: Row(
+                  children: List.generate(
+                      10,
+                      (index) => "Menu Items"
+                          .text
+                          .fontFamily(semibold)
+                          .make()
+                          .box
+                          .rounded
+                          .alignCenter
+                          .hexColor("#454242")
+                          //.black
+                          .size(100, 23)
+                          .margin(const EdgeInsets.symmetric(horizontal: 4))
+                          .make()),
+                ),
+              ),
+              20.heightBox,
+              Row(
+                children: List.generate(
+                    1,
+                    (index) => HomeCard(
+                          height: context.screenHeight * 0.15,
+                          width: context.screenWidth / 1.1,
+                        )),
+              ),
+              30.heightBox,
+              Row(
+                children: const [Text('hello')],
+              )
+            ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
