@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/chats.dart';
-import 'package:flutter_application_1/homePage.dart';
+import 'package:flutter_application_1/files/homePage.dart';
+import 'package:flutter_application_1/files/mediaplayer.dart';
+//import 'package:flutter_application_1/files/mediaplayer.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  int selected = 0;
+  // int selected = 0;
 
   @override
   Widget build(BuildContext context) {
