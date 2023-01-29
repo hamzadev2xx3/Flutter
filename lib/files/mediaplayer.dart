@@ -41,7 +41,10 @@ class _MyWidgetState extends State<mPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return _cVideoPlayer();
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+        child: _cVideoPlayer()
+        );
   }
 
   Widget _cVideoPlayer() {

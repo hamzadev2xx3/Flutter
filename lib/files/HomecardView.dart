@@ -45,7 +45,7 @@ Widget HomeCard({width, height, image}) {
             ),
           ),
           const Positioned(
-            top: 70,
+            top: 60,
             right: 0,
             bottom: 5,
             child: Padding(
