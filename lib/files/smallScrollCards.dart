@@ -10,14 +10,14 @@ List<String> imgList = [
   "lib/icons/img7.jpeg",
 ];
 
-List<Widget> cardList = List.generate(7, (index) {
-  return cardScrolls(imgList[index]);
+List<Widget> smallcardList = List.generate(7, (index) {
+  return smallCardScrolls(imgList[index]);
 });
 
-Widget cardScrolls(String image) {
+Widget smallCardScrolls(String image) {
   return SizedBox(
-    width: 350,
-    height: 150,
+    width: 200, height: 100,
+    //height: 200,
     child: Padding(
       padding: const EdgeInsets.all(5),
       child: ClipRRect(
