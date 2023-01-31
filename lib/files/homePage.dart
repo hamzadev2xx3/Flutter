@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/files/HomecardView.dart';
 import 'package:flutter_application_1/files/scrollCards.dart';
+import 'package:flutter_application_1/files/smallScrollCards.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_application_1/consts/styles.dart';
 import 'package:flutter_application_1/files/mediaplayer.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _MyAppState extends State<HomePage> {
   int selected = 0;
+  final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,26 +61,47 @@ class _MyAppState extends State<HomePage> {
                 child: Column(
                   children: [
                     SingleChildScrollView(
+                      controller: _scrollController,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       child: Row(
                         children: List.generate(
-                            10,
-                            (index) => "Menu Items"
-                                .text
-                                .fontFamily(semibold)
-                                .make()
+                          5,
+                          (index) => GestureDetector(
+                            onTap: () {
+                              // Perform an action when the item is tapped
+                              setState(() {
+                                selected = index;
+                                _scrollController.animateTo(
+                                  index * 100,
+                                  duration: const Duration(milliseconds: 400),
+                                  curve: Curves.easeOut,
+                                );
+                              });
+                            },
+                            child: Text(
+                              "Menu Items",
+                              style: TextStyle(
+                                fontFamily: semibold,
+                                color: selected == index
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
+                            )
                                 .box
                                 .rounded
                                 .alignCenter
-                                .hexColor("#454242")
-                                //.black
+                                .hexColor(
+                                    selected == index ? "#FFFFFF" : "#454242")
                                 .size(100, 23)
                                 .margin(
                                     const EdgeInsets.symmetric(horizontal: 4))
-                                .make()),
+                                .make(),
+                          ),
+                        ),
                       ),
                     ),
+
                     20.heightBox,
                     Row(
                       children: List.generate(
@@ -112,28 +135,46 @@ class _MyAppState extends State<HomePage> {
                         )
                       ],
                     ),
-                    30.heightBox,
-                    SizedBox(
-                      // height: context.screenHeight * 0.25,
-                      // width: context.screenWidth / 1.1,
-                      // margin: const EdgeInsets.symmetric(vertical: 20),
-                      //height: 100,
-                      child: Column(
-                        children: [
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                            children: cardList,
-                            //  children: List.generate(
-                             //   7,
-                            //    (index) => cardScrolls("lib/icons/img5.jpeg"),
-                           //   ),
-                            ),
-                          ),
-                        ],
+                    20.heightBox,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: cardList,
                       ),
                     ),
-                    30.heightBox,
+                    10.heightBox,
+                    Row(
+                      children: const [
+                        Text(
+                          'Previews',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        )
+                      ],
+                    ),
+                    10.heightBox,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: smallcardList,
+                      ),
+                    ),
+                    //10.heightBox,
+                    Container(
+                      padding: const EdgeInsets.all(15),
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 207, 184, 34),
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          'UNLOCK PRAY PREMIUM',
+                          style: TextStyle(color: Colors.black, fontSize: 14),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
